@@ -1,8 +1,9 @@
 data/robomaker
 data/minio/bucket/current
-data/minio/bucket/rl-deepracer-pretrained
+data/minio/bucket/rl-deepracer-pretrain**
 data/minio/bucket/DeepRacer-Metrics
 data/minio/.minio.sys
 .idea
 **/.idea
 __pycache__
+**.gz

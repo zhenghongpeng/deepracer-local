@@ -63,7 +63,7 @@ done
 VAR1=`cat $CHECKPOINT_FILE |jq ".last_checkpoint = .best_checkpoint"`
 VAR2=`echo $VAR1 |jq ".last_checkpoint.name = $CHECKPOINT"`
 VAR3=`echo $VAR2 |jq ".best_checkpoint.name = $CHECKPOINT"`
-echo $VAR3 >checkpoint/deepracer_checkpoints.json
+echo $VAR2 >checkpoint/deepracer_checkpoints.json
 
 # upload files to s3
 for filename in checkpoint/*; do

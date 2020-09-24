@@ -1,44 +1,9 @@
 {
-    "action_space": [
-        {
-            "steering_angle": -30,
-            "speed": 1.0,
-            "index": 0
-        },
-        {
-            "steering_angle": -20,
-            "speed": 1.2,
-            "index": 1
-        },
-        {
-            "steering_angle": -10,
-            "speed": 1.2,
-            "index": 2
-        },
-        {
-            "steering_angle": 0,
-            "speed": 1.2,
-            "index": 3
-        },
-        {
-            "steering_angle": 10,
-            "speed": 1.2,
-            "index": 4
-        },
-        {
-            "steering_angle": 20,
-            "speed": 1.2,
-            "index": 5
-        },
-        {
-            "steering_angle": 30,
-            "speed": 1.0,
-            "index": 6
-        }
-    ],
-    "sensor": [
-        "FRONT_FACING_CAMERA"
-    ],
-    "neural_network": "DEEP_CONVOLUTIONAL_NETWORK_SHALLOW",
-    "version": "2"
-}
+  "action_space": [
+    {"steering_angle":18.2172,"speed":3.3285,"index":0},{"steering_angle":6.2244,"speed":1.6315,"index":1},{"steering_angle":-0.3723,"speed":2.6,"index":2},{"steering_angle":-1.1794,"speed":3.5925,"index":3},{"steering_angle":-8.1243,"speed":3.0764,"index":4},{"steering_angle":9.087,"speed":2.0048,"index":5},{"steering_angle":13.0529,"speed":2.9251,"index":6},{"steering_angle":-2.1795,"speed":1.383,"index":7},{"steering_angle":21.1143,"speed":1.5541,"index":8},{"steering_angle":16.9304,"speed":2.4377,"index":9},{"steering_angle":-8.5955,"speed":2.5053,"index":10},{"steering_angle":-14.9239,"speed":3.5202,"index":11},{"steering_angle":5.562,"speed":2.4517,"index":12},{"steering_angle":2.2136,"speed":2.8857,"index":13},{"steering_angle":-4.4191,"speed":1.9155,"index":14},{"steering_angle":0.6579,"speed":3.9064,"index":15},{"steering_angle":3.1848,"speed":3.2037,"index":16},{"steering_angle":12.6096,"speed":3.6429,"index":17},{"steering_angle":12.5574,"speed":1.3366,"index":18},{"steering_angle":30.0,"speed":1.3,"index":19},{"steering_angle":-30.0,"speed":1.3,"index":20}],
+  "sensor": [
+      "FRONT_FACING_CAMERA"
+  ],
+  "neural_network": "DEEP_CONVOLUTIONAL_NETWORK_SHALLOW",
+  "version": "2"
+  }
