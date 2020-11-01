@@ -146,6 +146,7 @@ class Reward:
 
             return projected_time
 
+
         #################### RACING LINE ######################
 
         # Optimal racing line for the Spain track
@@ -594,6 +595,8 @@ class Reward:
         dist = dist_to_racing_line(optimals[0:2], optimals_second[0:2], [x, y])
         distance_reward = max(1e-3, 1 - (dist/(track_width*0.5)))
         reward += distance_reward * DISTANCE_MULTIPLE
+
+
 
         ## Reward if speed is close to optimal speed ##
         SPEED_DIFF_NO_REWARD = 1

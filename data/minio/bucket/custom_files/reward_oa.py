@@ -146,6 +146,47 @@ class Reward(object):
                 projected_time = 9999
 
             return projected_time
+        
+        # Object Avoidance
+        def ob_function(params):
+            '''
+            Example of rewarding the agent to stay inside two borders
+            and penalizing getting too close to the objects in front
+            '''
+
+            all_wheels_on_track = params['all_wheels_on_track']
+            distance_from_center = params['distance_from_center']
+            track_width = params['track_width']
+            objects_distance = params['objects_distance']
+            _, next_object_index = params['closest_objects']
+            objects_left_of_center = params['objects_left_of_center']
+            is_left_of_center = params['is_left_of_center']
+
+            # Initialize reward with a small number but not zero
+            # because zero means off-track or crashed
+            reward = 1e-3
+
+            # Penalize if the agent is too close to the next object
+            reward_avoid = 1.0
+
+            # Distance to the next object
+            distance_closest_object = objects_distance[next_object_index]
+            # Decide if the agent and the next object is on the same lane
+            is_same_lane = objects_left_of_center[next_object_index] == is_left_of_center
+            
+            if is_same_lane:
+                if 0.5 <= distance_closest_object < 0.8: 
+                    reward_avoid *= 0.5
+                elif 0.3 <= distance_closest_object < 0.5:
+                    reward_avoid *= 0.2
+                elif distance_closest_object < 0.3:
+                    reward_avoid = 1e-3 # Likely crashed
+
+            # Calculate reward by putting different weights on 
+            # the two aspects above
+            reward += 1.0 * reward_avoid
+
+            return reward
 
         #################### RACING LINE ######################
 
@@ -622,7 +663,7 @@ class Reward(object):
             steps_reward = min(REWARD_PER_STEP_FOR_FASTEST_TIME, reward_prediction / steps_prediction)
         except:
             steps_reward = 0
-        reward += steps_reward * 3
+        reward += steps_reward
 
         # Zero reward if obviously wrong direction (e.g. spin)
         direction_diff = racing_direction_diff(
@@ -634,7 +675,11 @@ class Reward(object):
         speed_diff_zero = optimals[2]-speed
         if speed_diff_zero > 0.5:
             reward = 1e-3
-            
+        
+        ## reward object avoidance
+
+        reward +=ob_function(params)
+
         ## Incentive for finishing the lap in less steps ##
         REWARD_FOR_FASTEST_TIME = 1500 # should be adapted to track length and other rewards
         STANDARD_TIME = 37  # seconds (time that is easily done by model)
